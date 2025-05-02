@@ -10,21 +10,22 @@ mongoose.connect(url)
 
   .then(result => {
     console.log('connected to MongoDB')
+    console.log(`Result: ${result}`)
   })
   .catch(error => {
     console.log('error connecting to MongoDB:', error.message)
   })
 
 function lenValidator(val) {
-    return val.length > 7
+  return val.length > 7
 }
 
 function formValidator(val) {
-    return /^\d{2,3}-\d+$/.test(val)
+  return /^\d{2,3}-\d+$/.test(val)
 }
 
 const validators = [
-    { validator: lenValidator, message: 'Phone number must have at least 7 numbers separated by dash (-)!' }
+  { validator: lenValidator, message: 'Phone number must have at least 7 numbers separated by dash (-)!' }
   , { validator: formValidator, message: 'Phone number must be a two parter, 2-3 and >4 number separated by dash (-)! E.g. 242-5435' }
 ]
 
